@@ -17,7 +17,7 @@ You are **not** running a fuzzer or formal verifier. This is a structured human-
 
 1. **Identify the target.** Locate the hook contract(s). Check for:
    - The hook's deployed (or salt-mined) address — permission flags live in the low 14 bits
-   - Inheritance — does it extend `BaseHook` (v4-periphery) or the OpenZeppelin variant? If not, expect more findings under Phase 1
+   - Inheritance — does it extend `BaseHook` (v4-periphery)? If not, expect more findings under Phase 1
    - Associated contracts — periphery routers, accounting hubs, vaults, incentive distributors
 
 2. **Run each phase in order.** For each phase, read the corresponding reference file under `references/`, then check the heuristics against the target. Phases are independent — if a phase doesn't apply (e.g. the hook has no dynamic fee logic), note that and move on.
@@ -30,7 +30,7 @@ You are **not** running a fuzzer or formal verifier. This is a structured human-
    - **Impact** — what an attacker (or honest user) loses if this is exploited
    - **Fix** — concrete remediation (not just "validate input")
 
-4. **Produce the report.** Default to markdown. Group by severity (Critical first), then by category. End with a summary table and a list of categories that were checked but had no findings (so the human reviewer can see coverage).
+4. **Produce the report.** You MUST write the final report to a new markdown file in the current directory (e.g., `v4-hook-security-review.md`). Do not just print it in the terminal. Group by severity (Critical first), then by category. End with a summary table and a list of categories that were checked but had no findings (so the human reviewer can see coverage).
 
 ## Phases and reference files
 
